@@ -1,7 +1,6 @@
 package com.ksan.example.testspringboot.servingwebcontent;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -16,6 +15,12 @@ public class GreetingController {
             Map<String, Object> model) {
         model.put("guest_name", name);
         return "greeting";
+    }
+    @GetMapping
+    public String startPage(Map<String, Object> model){
+        model.put("start_info", "this is the start page");
+       // model.put("ico", "templates/RedTurnip.ico");
+        return "startPage";
     }
 
 }
