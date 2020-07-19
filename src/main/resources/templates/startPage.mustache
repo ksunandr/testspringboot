@@ -1,12 +1,26 @@
-<!DOCTYPE HTML>
 <html>
-<head>
-    <title>Start page1</title>
 
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-
-</head>
 <body>
 <div>{{start_info}}</div>
+
+<div>
+    <form method="post">
+        <input type="text" name="text" placeholder="Input message">
+        <input type="text" name="tag" placeholder="Input tag">
+        <button type="submit">Add</button>
+    </form>
+</div>
+
+<div>Messages:</div>
+    {{#messages}}
+        <div>
+            <b>{{id}}</b>
+            <b>{{text}}</b>
+            <b>{{tag}}</b>
+        </div>
+
+{{/messages}}
+
+
 </body>
 </html>
