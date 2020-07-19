@@ -28,13 +28,12 @@ public class GreetingController {
         return "greeting";
     }
 
-    @GetMapping
+    @GetMapping //it means "/"
     public String startPage(Map<String, Object> model) {
         model.put("start_info", "this is the start page");
 
         Iterable<Message> messages = messageRepo.findAll();
         model.put("messages", messages);
-        // model.put("ico", "templates/RedTurnip.ico");
         return "startPage";
     }
 
@@ -47,6 +46,22 @@ public class GreetingController {
 
         Iterable<Message> messages = messageRepo.findAll();
 
+        model.put("messages", messages);
+        model.put("start_info", "start_info");
+
+        return "startPage";
+    }
+
+    @PostMapping("filter")
+    public String filter(@RequestParam String tag,
+                         Map<String, Object> model) {
+        Iterable<Message> messages;
+
+        if (tag == null || tag.isEmpty()) {
+            messages = messageRepo.findAll();
+        } else {
+            messages = messageRepo.findByTagStartingWith(tag);
+        }
         model.put("messages", messages);
         model.put("start_info", "start_info");
 

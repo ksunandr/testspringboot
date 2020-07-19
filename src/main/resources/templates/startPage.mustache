@@ -12,6 +12,10 @@
 </div>
 
 <div>Messages:</div>
+<form method="post" action="filter">
+    <input type="text" name="tag">
+    <button type="submit">Find</button>
+</form>
     {{#messages}}
         <div>
             <b>{{id}}</b>
@@ -19,7 +23,7 @@
             <b>{{tag}}</b>
         </div>
 
-{{/messages}}
+    {{/messages}}
 
 
 </body>
