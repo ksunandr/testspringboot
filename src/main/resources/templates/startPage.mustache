@@ -2,9 +2,15 @@
 
 <body>
 <div>{{start_info}}</div>
-
 <div>
-    <form method="post">
+    <form action="/logout" method="post">
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
+        <input type="submit" value="Sign Out"/>
+    </form>
+</div>
+<div>
+    <form method="post" action="add">
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
         <input type="text" name="text" placeholder="Input message">
         <input type="text" name="tag" placeholder="Input tag">
         <button type="submit">Add</button>
@@ -13,6 +19,7 @@
 
 <div>Messages:</div>
 <form method="post" action="filter">
+    <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
     <input type="text" name="tag">
     <button type="submit">Find</button>
 </form>

@@ -19,7 +19,7 @@ public class GreetingController {
     @Autowired
     private MessageRepo messageRepo;
 
-    @GetMapping("/greeting")
+    @GetMapping //it means "/"
     public String greeting(
             @RequestParam(name = "name", required = false, defaultValue = "World")
                     String name,
@@ -28,7 +28,7 @@ public class GreetingController {
         return "greeting";
     }
 
-    @GetMapping //it means "/"
+    @GetMapping("/startPage")//it means "/"
     public String startPage(Map<String, Object> model) {
         model.put("start_info", "this is the start page");
 
@@ -37,7 +37,9 @@ public class GreetingController {
         return "startPage";
     }
 
-    @PostMapping    // @RequestParam means it is a parameter from the GET or POST request
+
+
+    @PostMapping("add")   // @RequestParam means it is a parameter from the GET or POST request
     public String add(@RequestParam String text,
                       @RequestParam String tag,
                       Map<String, Object> model) {
@@ -53,7 +55,7 @@ public class GreetingController {
     }
 
     @PostMapping("filter")
-    public String filter(@RequestParam String tag,
+    public String filter(@RequestParam(name = "tag", required = false, defaultValue = "") String tag,
                          Map<String, Object> model) {
         Iterable<Message> messages;
 
